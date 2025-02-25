@@ -1,0 +1,159 @@
+<!-- shop.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>xurst's workshop | Shop</title>
+  <!-- Tailwind CSS (Browser build) -->
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <!-- Minimal Fade-In Styles -->
+  <style>
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- HEADER -->
+  <header class="header bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row md:items-center md:justify-between">
+      <!-- Logo (clickable to index) -->
+      <div class="header__logo text-2xl font-bold mb-4 md:mb-0">
+        <a href="index.html" class="hover:text-blue-600">xurst's workshop</a>
+      </div>
+
+      <!-- Wide Search Bar in the Middle -->
+      <div class="header__search w-full md:max-w-xl mb-4 md:mb-0">
+        <form id="shopSearchForm" class="relative">
+          <input 
+            id="shopSearchInput"
+            type="text" 
+            placeholder="Search all products..." 
+            class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <!-- Search Icon -->
+          <svg 
+            class="w-5 h-5 absolute left-3 top-2.5 text-gray-400" 
+            fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M8 16l-4.293 4.293a1 1 0 001.414 1.414L9.414 17.414A8 8 0 108 16z">
+            </path>
+          </svg>
+        </form>
+      </div>
+
+      <!-- Nav -->
+      <nav class="header__nav">
+        <ul class="flex space-x-6 text-lg">
+          <li><a href="index.html" class="hover:text-blue-600">Home</a></li>
+          <li><a href="shop.html" class="hover:text-blue-600">Shop</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- END HEADER -->
+
+  <!-- SHOP BANNER (Use different stock photo) -->
+  <section class="shop__banner relative fade-in mt-4">
+    <img 
+      src="https://images.unsplash.com/photo-1472289065668-ce650ac443d2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGJhbm5lcnxlbnwwfHwwfHx8MA%3D%3D"
+      alt="Shop Banner"
+      class="w-full h-72 object-cover"
+    >
+    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+      <h2 class="text-white text-4xl font-bold text-center px-4">
+        Our Full Collection
+      </h2>
+    </div>
+  </section>
+
+  <!-- FILTER (Like Macy's) -->
+  <section class="shop__filter fade-in mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+      <div class="mb-4 md:mb-0 text-lg font-semibold">Filter by Category:</div>
+      <select id="shopFilter" class="border border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option value="all">All Products</option>
+        <option value="necklace">Necklaces</option>
+        <option value="handbag">Handbags</option>
+        <option value="shoes">Shoes</option>
+        <option value="scarf">Scarves</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- ALL PRODUCTS -->
+  <section class="all-products fade-in mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div id="shopGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <!-- Example Product #1 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow" data-category="necklace">
+        <img 
+          src="https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bmVja2xhY2V8ZW58MHx8MHx8fDA%3D"
+          alt="Necklace" 
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Stunning Necklace</h3>
+          <p class="mt-2 text-gray-600">Elevate your style with this piece.</p>
+        </div>
+      </div>
+      <!-- Example Product #2 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow" data-category="handbag">
+        <img 
+          src="https://images.unsplash.com/photo-1559563458-527698bf5295?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aGFuZGJhZ3xlbnwwfHwwfHx8MA%3D%3D"
+          alt="Handbag" 
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Modern Handbag</h3>
+          <p class="mt-2 text-gray-600">Spacious and chic for everyday use.</p>
+        </div>
+      </div>
+      <!-- Example Product #3 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow" data-category="shoes">
+        <img 
+          src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c2hvZXN8ZW58MHx8MHx8fDA%3D"
+          alt="Shoes" 
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Fashion Shoes</h3>
+          <p class="mt-2 text-gray-600">Step into style with these comfortable shoes.</p>
+        </div>
+      </div>
+      <!-- Example Product #4 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow" data-category="scarf">
+        <img 
+          src="https://images.unsplash.com/photo-1601244005535-a48d21d951ac?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNjYXJmfGVufDB8fDB8fHww"
+          alt="Scarf" 
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Printed Scarf</h3>
+          <p class="mt-2 text-gray-600">Brighten up your outfit with this accessory.</p>
+        </div>
+      </div>
+      <!-- Add more as needed -->
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer bg-white mt-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-gray-500 text-sm">
+      &copy; 2025 xurst's workshop. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- MAIN JS -->
+  <script src="src/main.js"></script>
+</body>
+</html>
