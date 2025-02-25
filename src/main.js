@@ -1,75 +1,53 @@
 /* src/main.js */
 
-/* FADE-IN ON SCROLL */
-const fadeInElements = document.querySelectorAll('.fade-in');
+/* Fade-In on Scroll */
+const fadeInElems = document.querySelectorAll('.fade-in');
 const fadeInObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
-      // Unobserve if you only want to animate once
-      fadeInObserver.unobserve(entry.target);
+      // Remove unobserve if you want repeated fade on each scroll
+      // fadeInObserver.unobserve(entry.target);
     }
   });
 });
-fadeInElements.forEach((el) => fadeInObserver.observe(el));
+fadeInElems.forEach((el) => fadeInObserver.observe(el));
 
-/* SIMPLE SEARCH SYSTEM (Index + Shop) */
+/* Scroll to Top Button */
+const scrollBtn = document.getElementById('scrollToTopBtn');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    scrollBtn.classList.add('show');
+  } else {
+    scrollBtn.classList.remove('show');
+  }
+});
+scrollBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* Simple Search (Index) */
 const searchInput = document.getElementById('searchInput');
-const featuredGrid = document.getElementById('featuredGrid');
-const shopSearchInput = document.getElementById('shopSearchInput');
-const shopGrid = document.getElementById('shopGrid');
-
-if (searchInput && featuredGrid) {
+const featuredProducts = document.querySelectorAll('.featured .product-card');
+if (searchInput && featuredProducts) {
   searchInput.addEventListener('input', () => {
     const query = searchInput.value.toLowerCase();
-    const items = featuredGrid.querySelectorAll('.product-grid__item');
-    items.forEach((item) => {
-      const text = item.innerText.toLowerCase();
-      item.style.display = text.includes(query) ? 'block' : 'none';
+    featuredProducts.forEach((card) => {
+      const name = card.getAttribute('data-name') || '';
+      card.style.display = name.toLowerCase().includes(query) ? 'block' : 'none';
     });
   });
 }
 
-if (shopSearchInput && shopGrid) {
+/* Simple Search (Shop) */
+const shopSearchInput = document.getElementById('shopSearchInput');
+const shopItems = document.querySelectorAll('#shopGrid .product-grid__item');
+if (shopSearchInput && shopItems) {
   shopSearchInput.addEventListener('input', () => {
     const query = shopSearchInput.value.toLowerCase();
-    const items = shopGrid.querySelectorAll('.product-grid__item');
-    items.forEach((item) => {
-      const text = item.innerText.toLowerCase();
-      item.style.display = text.includes(query) ? 'block' : 'none';
-    });
-  });
-}
-
-/* SIMPLE FILTER SYSTEM (Index + Shop) */
-const featuredFilter = document.getElementById('featuredFilter');
-if (featuredFilter && featuredGrid) {
-  featuredFilter.addEventListener('change', () => {
-    const val = featuredFilter.value;
-    const items = featuredGrid.querySelectorAll('.product-grid__item');
-    items.forEach((item) => {
-      const cat = item.getAttribute('data-category');
-      if (val === 'all' || cat === val) {
-        item.style.display = 'block';
-      } else {
-        item.style.display = 'none';
-      }
-    });
-  });
-}
-
-const shopFilter = document.getElementById('shopFilter');
-if (shopFilter && shopGrid) {
-  shopFilter.addEventListener('change', () => {
-    const val = shopFilter.value;
-    const items = shopGrid.querySelectorAll('.product-grid__item');
-    items.forEach((item) => {
-      const cat = item.getAttribute('data-category');
-      if (val === 'all' || cat === val) {
-        item.style.display = 'block';
-      } else {
-        item.style.display = 'none';
-      }
+    shopItems.forEach((item) => {
+      const name = item.getAttribute('data-name') || '';
+      item.style.display = name.toLowerCase().includes(query) ? 'block' : 'none';
     });
   });
 }

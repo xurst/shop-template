@@ -4,12 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>xurst's workshop | Home</title>
+  <title>ChatGPT lmfao | Home</title>
+
   <!-- Tailwind CSS (Browser build) -->
   <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-  <!-- Minimal Fade-In Styles -->
+
+  <!-- Minimal Fade-In & Scroll-To-Top Styles -->
   <style>
-    /* Fade-in utility classes */
+    /* Fade-in utility */
     .fade-in {
       opacity: 0;
       transform: translateY(30px);
@@ -19,25 +21,36 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* Scroll-to-top button */
+    #scrollToTopBtn {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease;
+    }
+    #scrollToTopBtn.show {
+      opacity: 1;
+      visibility: visible;
+    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-  <!-- HEADER -->
+  <!-- HEADER / NAV -->
   <header class="header bg-white shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row md:items-center md:justify-between">
-      <!-- Logo (clickable to index) -->
+      <!-- Logo clickable to index -->
       <div class="header__logo text-2xl font-bold mb-4 md:mb-0">
-        <a href="index.html" class="hover:text-blue-600">xurst's workshop</a>
+        <a href="index.html" class="hover:text-blue-600">ChatGPT lmfao</a>
       </div>
 
-      <!-- Wide Search Bar in the Middle -->
+      <!-- Wide Search Bar in the middle -->
       <div class="header__search w-full md:max-w-xl mb-4 md:mb-0">
         <form id="searchForm" class="relative">
           <input 
             id="searchInput"
             type="text" 
-            placeholder="Search products..." 
+            placeholder="Search featured products..." 
             class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <!-- Search Icon -->
@@ -53,7 +66,7 @@
         </form>
       </div>
 
-      <!-- Navigation -->
+      <!-- Nav Links -->
       <nav class="header__nav">
         <ul class="flex space-x-6 text-lg">
           <li><a href="index.html" class="hover:text-blue-600">Home</a></li>
@@ -64,97 +77,156 @@
   </header>
   <!-- END HEADER -->
 
-  <!-- HERO BANNER (Use stock photo for Macy's-like style) -->
+  <!-- HERO BANNER (Use stock image to ensure it's not black) -->
   <section class="hero__banner relative fade-in mt-4">
-    <!-- Example stock image from Unsplash -->
+    <!-- Stock image from Unsplash -->
     <img 
-      src="https://images.unsplash.com/photo-1472289065668-ce650ac443d2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGJhbm5lcnxlbnwwfHwwfHx8MA%3D%3D"
+      src="https://images.unsplash.com/photo-1569306133956-714efe60febb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80"
       alt="Banner"
       class="w-full h-96 object-cover"
     >
     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
       <h1 class="text-white text-4xl md:text-6xl font-bold text-center px-4">
-        Welcome to xurst's workshop
+        Welcome to ChatGPT lmfao
       </h1>
     </div>
   </section>
 
-  <!-- FEATURED PRODUCTS (Only show featured on home) -->
+  <!-- FEATURED PRODUCTS (5 items) -->
   <section class="featured fade-in mt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <h2 class="text-3xl font-bold text-center mb-8">Featured Products</h2>
-    <!-- Filter (like Macy's) - minimal example for homepage, could be hidden or removed here -->
-    <div class="flex justify-center mb-6">
-      <select id="featuredFilter" class="border border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <option value="all">All Featured</option>
-        <option value="necklace">Necklaces</option>
-        <option value="handbag">Handbags</option>
-        <option value="shoes">Shoes</option>
-        <option value="scarf">Scarves</option>
-      </select>
-    </div>
-
-    <!-- Grid of Featured Products -->
-    <div id="featuredGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-      <!-- Example Product #1 -->
-      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow" data-category="necklace">
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+      <!-- Product #1 -->
+      <div class="border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow product-card fade-in" data-name="Elegant Necklace">
         <img 
-          src="https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bmVja2xhY2V8ZW58MHx8MHx8fDA%3D"
+          src="https://images.unsplash.com/photo-1600180758890-3a2bd0bdbd55?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
           alt="Elegant Necklace" 
           class="w-full h-64 object-cover"
         >
         <div class="p-4">
           <h3 class="text-xl font-semibold">Elegant Necklace</h3>
-          <p class="mt-2 text-gray-600">A timeless piece perfect for any occasion.</p>
+          <p class="mt-1 text-gray-600">$95.00 - $150.00</p>
+          <p class="text-sm text-yellow-500">★★★★☆ (234 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Gold, Silver</p>
         </div>
       </div>
 
-      <!-- Example Product #2 -->
-      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow" data-category="handbag">
+      <!-- Product #2 -->
+      <div class="border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow product-card fade-in" data-name="Classic Purse">
         <img 
-          src="https://images.unsplash.com/photo-1559563458-527698bf5295?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aGFuZGJhZ3xlbnwwfHwwfHx8MA%3D%3D"
-          alt="Classic Handbag" 
+          src="https://images.unsplash.com/photo-1589182324352-f2628279c4c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Classic Purse"
           class="w-full h-64 object-cover"
         >
         <div class="p-4">
-          <h3 class="text-xl font-semibold">Classic Handbag</h3>
-          <p class="mt-2 text-gray-600">Sophisticated and stylish to complement your look.</p>
+          <h3 class="text-xl font-semibold">Classic Purse</h3>
+          <p class="mt-1 text-gray-600">$110.00 - $210.00</p>
+          <p class="text-sm text-yellow-500">★★★☆☆ (98 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Black, Brown</p>
         </div>
       </div>
 
-      <!-- Example Product #3 -->
-      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow" data-category="shoes">
+      <!-- Product #3 -->
+      <div class="border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow product-card fade-in" data-name="Stylish Earrings">
         <img 
-          src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c2hvZXN8ZW58MHx8MHx8fDA%3D"
-          alt="Stylish Shoes" 
+          src="https://images.unsplash.com/photo-1600180758975-511860e23a3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Stylish Earrings"
           class="w-full h-64 object-cover"
         >
         <div class="p-4">
-          <h3 class="text-xl font-semibold">Stylish Shoes</h3>
-          <p class="mt-2 text-gray-600">Step out in style for any occasion.</p>
+          <h3 class="text-xl font-semibold">Stylish Earrings</h3>
+          <p class="mt-1 text-gray-600">$75.00 - $95.00</p>
+          <p class="text-sm text-yellow-500">★★★★☆ (50 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Rose Gold, Silver</p>
         </div>
       </div>
 
-      <!-- Example Product #4 -->
-      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow" data-category="scarf">
+      <!-- Product #4 -->
+      <div class="border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow product-card fade-in" data-name="Leather Handbag">
         <img 
-          src="https://images.unsplash.com/photo-1601244005535-a48d21d951ac?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNjYXJmfGVufDB8fDB8fHww"
-          alt="Vintage Scarf" 
+          src="https://images.unsplash.com/photo-1582572112095-6320944b4373?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Leather Handbag"
           class="w-full h-64 object-cover"
         >
         <div class="p-4">
-          <h3 class="text-xl font-semibold">Vintage Scarf</h3>
-          <p class="mt-2 text-gray-600">Add a retro vibe to your outfit.</p>
+          <h3 class="text-xl font-semibold">Leather Handbag</h3>
+          <p class="mt-1 text-gray-600">$120.00 - $180.00</p>
+          <p class="text-sm text-yellow-500">★★★★★ (412 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Tan, Red, Black</p>
+        </div>
+      </div>
+
+      <!-- Product #5 -->
+      <div class="border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow product-card fade-in" data-name="Beaded Clutch">
+        <img 
+          src="https://images.unsplash.com/photo-1600180758892-cfe2f612ac72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Beaded Clutch"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Beaded Clutch</h3>
+          <p class="mt-1 text-gray-600">$65.00 - $90.00</p>
+          <p class="text-sm text-yellow-500">★★★★☆ (77 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Multi, Black</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT ME SECTION (like Macy's) -->
+  <section class="contact fade-in mt-10 bg-white py-8 border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Blog / Email Sign Up -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Stay in the Loop</h3>
+          <p class="text-gray-600 mb-4">Sign up for our newsletter to get the latest deals and news.</p>
+          <form class="flex flex-col sm:flex-row items-start sm:items-center">
+            <input 
+              type="email" 
+              placeholder="Your email address"
+              class="mb-2 sm:mb-0 sm:mr-2 flex-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <button 
+              type="submit"
+              class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+
+        <!-- Connect Section -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Connect with Us</h3>
+          <p class="text-gray-600 mb-4">Follow us on social media for updates.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="hover:text-blue-600">Facebook</a>
+            <a href="#" class="hover:text-blue-600">Instagram</a>
+            <a href="#" class="hover:text-blue-600">Twitter</a>
+            <a href="#" class="hover:text-blue-600">YouTube</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer bg-white mt-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-gray-500 text-sm">
-      &copy; 2025 xurst's workshop. All rights reserved.
+  <footer class="footer bg-gray-100 mt-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-gray-600 text-sm">
+      &copy; 2025 ChatGPT lmfao. All rights reserved.
     </div>
   </footer>
+
+  <!-- SCROLL TO TOP BUTTON -->
+  <button 
+    id="scrollToTopBtn"
+    class="fixed bottom-6 right-6 bg-blue-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700"
+  >
+    ↑ Top
+  </button>
 
   <!-- MAIN JS -->
   <script src="src/main.js"></script>

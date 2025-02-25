@@ -4,10 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>xurst's workshop | Shop</title>
+  <title>ChatGPT lmfao | Shop</title>
+
   <!-- Tailwind CSS (Browser build) -->
   <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-  <!-- Minimal Fade-In Styles -->
+
+  <!-- Minimal Fade-In & Scroll-To-Top Styles -->
   <style>
     .fade-in {
       opacity: 0;
@@ -18,6 +20,15 @@
       opacity: 1;
       transform: translateY(0);
     }
+    #scrollToTopBtn {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease;
+    }
+    #scrollToTopBtn.show {
+      opacity: 1;
+      visibility: visible;
+    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -25,12 +36,12 @@
   <!-- HEADER -->
   <header class="header bg-white shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row md:items-center md:justify-between">
-      <!-- Logo (clickable to index) -->
+      <!-- Logo clickable to index -->
       <div class="header__logo text-2xl font-bold mb-4 md:mb-0">
-        <a href="index.html" class="hover:text-blue-600">xurst's workshop</a>
+        <a href="index.html" class="hover:text-blue-600">ChatGPT lmfao</a>
       </div>
 
-      <!-- Wide Search Bar in the Middle -->
+      <!-- Wide Search Bar in the middle -->
       <div class="header__search w-full md:max-w-xl mb-4 md:mb-0">
         <form id="shopSearchForm" class="relative">
           <input 
@@ -63,10 +74,10 @@
   </header>
   <!-- END HEADER -->
 
-  <!-- SHOP BANNER (Use different stock photo) -->
+  <!-- SHOP BANNER (Use a different stock image) -->
   <section class="shop__banner relative fade-in mt-4">
     <img 
-      src="https://images.unsplash.com/photo-1472289065668-ce650ac443d2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGJhbm5lcnxlbnwwfHwwfHx8MA%3D%3D"
+      src="https://images.unsplash.com/photo-1600180758893-39518b2d3b27?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80"
       alt="Shop Banner"
       class="w-full h-72 object-cover"
     >
@@ -77,81 +88,349 @@
     </div>
   </section>
 
-  <!-- FILTER (Like Macy's) -->
-  <section class="shop__filter fade-in mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-      <div class="mb-4 md:mb-0 text-lg font-semibold">Filter by Category:</div>
-      <select id="shopFilter" class="border border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <option value="all">All Products</option>
-        <option value="necklace">Necklaces</option>
-        <option value="handbag">Handbags</option>
-        <option value="shoes">Shoes</option>
-        <option value="scarf">Scarves</option>
-      </select>
+  <!-- 20 ACTUAL PRODUCTS -->
+  <section class="all-products fade-in mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <h2 class="text-3xl font-bold text-center mb-8">All Products</h2>
+
+    <!-- Product Grid -->
+    <div id="shopGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <!-- Repeated items with prices, reviews, etc. -->
+      <!-- 1 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Necklace #1">
+        <img 
+          src="https://images.unsplash.com/photo-1569173428765-7b62e82e5d40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Necklace #1"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Necklace #1</h3>
+          <p class="mt-1 text-gray-600">$99.00 - $150.00</p>
+          <p class="text-sm text-yellow-500">★★★★☆ (102 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Gold, Silver</p>
+        </div>
+      </div>
+      <!-- 2 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Necklace #2">
+        <img 
+          src="https://images.unsplash.com/photo-1600180758890-3a2bd0bdbd55?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Necklace #2"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Necklace #2</h3>
+          <p class="mt-1 text-gray-600">$120.00 - $160.00</p>
+          <p class="text-sm text-yellow-500">★★★★☆ (80 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Gold, Rose Gold</p>
+        </div>
+      </div>
+      <!-- 3 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Handbag #1">
+        <img 
+          src="https://images.unsplash.com/photo-1582572112095-6320944b4373?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Handbag #1"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Handbag #1</h3>
+          <p class="mt-1 text-gray-600">$110.00 - $210.00</p>
+          <p class="text-sm text-yellow-500">★★★☆☆ (95 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Black, Red</p>
+        </div>
+      </div>
+      <!-- 4 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Handbag #2">
+        <img 
+          src="https://images.unsplash.com/photo-1582572112262-2913be2fcd66?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Handbag #2"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Handbag #2</h3>
+          <p class="mt-1 text-gray-600">$130.00 - $180.00</p>
+          <p class="text-sm text-yellow-500">★★★★☆ (120 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Brown, Tan</p>
+        </div>
+      </div>
+      <!-- 5 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Shoes #1">
+        <img 
+          src="https://images.unsplash.com/photo-1580397986212-93b1b13a06f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Shoes #1"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Shoes #1</h3>
+          <p class="mt-1 text-gray-600">$100.00 - $140.00</p>
+          <p class="text-sm text-yellow-500">★★★★☆ (201 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: White, Black</p>
+        </div>
+      </div>
+      <!-- 6 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Shoes #2">
+        <img 
+          src="https://images.unsplash.com/photo-1562158078-7c0ae4c99eb2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Shoes #2"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Shoes #2</h3>
+          <p class="mt-1 text-gray-600">$95.00 - $130.00</p>
+          <p class="text-sm text-yellow-500">★★★☆☆ (50 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Gray, White</p>
+        </div>
+      </div>
+      <!-- 7 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Scarf #1">
+        <img 
+          src="https://images.unsplash.com/photo-1626791840593-71dd55c9154f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Scarf #1"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Scarf #1</h3>
+          <p class="mt-1 text-gray-600">$45.00 - $60.00</p>
+          <p class="text-sm text-yellow-500">★★★★☆ (37 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Blue, Pink</p>
+        </div>
+      </div>
+      <!-- 8 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Scarf #2">
+        <img 
+          src="https://images.unsplash.com/photo-1600180758717-75b7f09e6461?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Scarf #2"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Scarf #2</h3>
+          <p class="mt-1 text-gray-600">$50.00 - $70.00</p>
+          <p class="text-sm text-yellow-500">★★★★☆ (65 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Red, Gray</p>
+        </div>
+      </div>
+      <!-- 9 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Bracelet #1">
+        <img 
+          src="https://images.unsplash.com/photo-1600180758892-cfe2f612ac72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Bracelet #1"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Bracelet #1</h3>
+          <p class="mt-1 text-gray-600">$60.00 - $95.00</p>
+          <p class="text-sm text-yellow-500">★★★★☆ (59 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Gold, Multi</p>
+        </div>
+      </div>
+      <!-- 10 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Bracelet #2">
+        <img 
+          src="https://images.unsplash.com/photo-1600180758975-511860e23a3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Bracelet #2"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Bracelet #2</h3>
+          <p class="mt-1 text-gray-600">$70.00 - $110.00</p>
+          <p class="text-sm text-yellow-500">★★★☆☆ (34 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Silver, Rose Gold</p>
+        </div>
+      </div>
+      <!-- 11 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Wallet #1">
+        <img 
+          src="https://images.unsplash.com/photo-1600180758719-6c39c4c8b2ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Wallet #1"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Wallet #1</h3>
+          <p class="mt-1 text-gray-600">$40.00 - $60.00</p>
+          <p class="text-sm text-yellow-500">★★★★☆ (90 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Brown, Black</p>
+        </div>
+      </div>
+      <!-- 12 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Wallet #2">
+        <img 
+          src="https://images.unsplash.com/photo-1600180758974-8537b9152228?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Wallet #2"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Wallet #2</h3>
+          <p class="mt-1 text-gray-600">$45.00 - $70.00</p>
+          <p class="text-sm text-yellow-500">★★★★☆ (72 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Gray, Navy</p>
+        </div>
+      </div>
+      <!-- 13 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Earrings #1">
+        <img 
+          src="https://images.unsplash.com/photo-1600180759082-44bd29b4fa4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Earrings #1"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Earrings #1</h3>
+          <p class="mt-1 text-gray-600">$55.00 - $85.00</p>
+          <p class="text-sm text-yellow-500">★★★★★ (110 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Silver, Pearl</p>
+        </div>
+      </div>
+      <!-- 14 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Earrings #2">
+        <img 
+          src="https://images.unsplash.com/photo-1600180758973-17edb760a85a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Earrings #2"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Earrings #2</h3>
+          <p class="mt-1 text-gray-600">$80.00 - $100.00</p>
+          <p class="text-sm text-yellow-500">★★★★☆ (64 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Gold, Diamond</p>
+        </div>
+      </div>
+      <!-- 15 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Ring #1">
+        <img 
+          src="https://images.unsplash.com/photo-1600180758891-3a2bd0bdbd56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Ring #1"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Ring #1</h3>
+          <p class="mt-1 text-gray-600">$120.00 - $170.00</p>
+          <p class="text-sm text-yellow-500">★★★★★ (220 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Gold, Silver</p>
+        </div>
+      </div>
+      <!-- 16 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Ring #2">
+        <img 
+          src="https://images.unsplash.com/photo-1600180758718-a25d9e02ac60?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Ring #2"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Ring #2</h3>
+          <p class="mt-1 text-gray-600">$130.00 - $190.00</p>
+          <p class="text-sm text-yellow-500">★★★★☆ (44 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Rose Gold, Platinum</p>
+        </div>
+      </div>
+      <!-- 17 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Belt #1">
+        <img 
+          src="https://images.unsplash.com/photo-1600180758893-39518b2d3b27?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Belt #1"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Belt #1</h3>
+          <p class="mt-1 text-gray-600">$55.00 - $70.00</p>
+          <p class="text-sm text-yellow-500">★★★☆☆ (33 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Black, Brown</p>
+        </div>
+      </div>
+      <!-- 18 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Belt #2">
+        <img 
+          src="https://images.unsplash.com/photo-1600180758993-157cd18d80a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Belt #2"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Belt #2</h3>
+          <p class="mt-1 text-gray-600">$65.00 - $90.00</p>
+          <p class="text-sm text-yellow-500">★★★★☆ (77 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: White, Red</p>
+        </div>
+      </div>
+      <!-- 19 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Watch #1">
+        <img 
+          src="https://images.unsplash.com/photo-1600180758974-8537b9152228?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Watch #1"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Watch #1</h3>
+          <p class="mt-1 text-gray-600">$150.00 - $200.00</p>
+          <p class="text-sm text-yellow-500">★★★★★ (99 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Silver, Gold</p>
+        </div>
+      </div>
+      <!-- 20 -->
+      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow fade-in" data-name="Watch #2">
+        <img 
+          src="https://images.unsplash.com/photo-1600180758973-17edb760a85a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Watch #2"
+          class="w-full h-64 object-cover"
+        >
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Watch #2</h3>
+          <p class="mt-1 text-gray-600">$160.00 - $210.00</p>
+          <p class="text-sm text-yellow-500">★★★★☆ (87 reviews)</p>
+          <p class="mt-2 text-gray-600">Colors: Black, Rose Gold</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ALL PRODUCTS -->
-  <section class="all-products fade-in mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <div id="shopGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-      <!-- Example Product #1 -->
-      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow" data-category="necklace">
-        <img 
-          src="https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bmVja2xhY2V8ZW58MHx8MHx8fDA%3D"
-          alt="Necklace" 
-          class="w-full h-64 object-cover"
-        >
-        <div class="p-4">
-          <h3 class="text-xl font-semibold">Stunning Necklace</h3>
-          <p class="mt-2 text-gray-600">Elevate your style with this piece.</p>
+  <!-- CONTACT ME SECTION (like Macy's) -->
+  <section class="contact fade-in mt-10 bg-white py-8 border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Blog / Email Sign Up -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Stay in the Loop</h3>
+          <p class="text-gray-600 mb-4">Sign up for our newsletter to get the latest deals and news.</p>
+          <form class="flex flex-col sm:flex-row items-start sm:items-center">
+            <input 
+              type="email" 
+              placeholder="Your email address"
+              class="mb-2 sm:mb-0 sm:mr-2 flex-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <button 
+              type="submit"
+              class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+
+        <!-- Connect Section -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Connect with Us</h3>
+          <p class="text-gray-600 mb-4">Follow us on social media for updates.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="hover:text-blue-600">Facebook</a>
+            <a href="#" class="hover:text-blue-600">Instagram</a>
+            <a href="#" class="hover:text-blue-600">Twitter</a>
+            <a href="#" class="hover:text-blue-600">YouTube</a>
+          </div>
         </div>
       </div>
-      <!-- Example Product #2 -->
-      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow" data-category="handbag">
-        <img 
-          src="https://images.unsplash.com/photo-1559563458-527698bf5295?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aGFuZGJhZ3xlbnwwfHwwfHx8MA%3D%3D"
-          alt="Handbag" 
-          class="w-full h-64 object-cover"
-        >
-        <div class="p-4">
-          <h3 class="text-xl font-semibold">Modern Handbag</h3>
-          <p class="mt-2 text-gray-600">Spacious and chic for everyday use.</p>
-        </div>
-      </div>
-      <!-- Example Product #3 -->
-      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow" data-category="shoes">
-        <img 
-          src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c2hvZXN8ZW58MHx8MHx8fDA%3D"
-          alt="Shoes" 
-          class="w-full h-64 object-cover"
-        >
-        <div class="p-4">
-          <h3 class="text-xl font-semibold">Fashion Shoes</h3>
-          <p class="mt-2 text-gray-600">Step into style with these comfortable shoes.</p>
-        </div>
-      </div>
-      <!-- Example Product #4 -->
-      <div class="product-grid__item border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow" data-category="scarf">
-        <img 
-          src="https://images.unsplash.com/photo-1601244005535-a48d21d951ac?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNjYXJmfGVufDB8fDB8fHww"
-          alt="Scarf" 
-          class="w-full h-64 object-cover"
-        >
-        <div class="p-4">
-          <h3 class="text-xl font-semibold">Printed Scarf</h3>
-          <p class="mt-2 text-gray-600">Brighten up your outfit with this accessory.</p>
-        </div>
-      </div>
-      <!-- Add more as needed -->
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer bg-white mt-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-gray-500 text-sm">
-      &copy; 2025 xurst's workshop. All rights reserved.
+  <footer class="footer bg-gray-100 mt-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-gray-600 text-sm">
+      &copy; 2025 ChatGPT lmfao. All rights reserved.
     </div>
   </footer>
+
+  <!-- SCROLL TO TOP BUTTON -->
+  <button 
+    id="scrollToTopBtn"
+    class="fixed bottom-6 right-6 bg-blue-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700"
+  >
+    ↑ Top
+  </button>
 
   <!-- MAIN JS -->
   <script src="src/main.js"></script>
